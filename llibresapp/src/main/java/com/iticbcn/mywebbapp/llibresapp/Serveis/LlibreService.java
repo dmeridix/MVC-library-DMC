@@ -2,20 +2,22 @@ package com.iticbcn.mywebbapp.llibresapp.Serveis;
 
 import com.iticbcn.mywebbapp.llibresapp.Model.Llibre;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface LlibreService {
 
-    Set<Llibre> findAll();
+    List<Llibre> findAll();
 
-    Optional<Llibre> findByTitol(String titol);
+    Llibre findByTitol(String titol);
 
-    Set<Llibre> findByTitolAndEditorial(String titol, String editorial);
+    ArrayList<Llibre> findByTitolAndEditorial(String titol, String editorial);
 
     Optional<Llibre> findByIdLlibre(int id);
 
     boolean validarISBN(String isbn);
 
+    boolean validarDataPub(String dataPublicacio);
     void save(Llibre llibre);
 }

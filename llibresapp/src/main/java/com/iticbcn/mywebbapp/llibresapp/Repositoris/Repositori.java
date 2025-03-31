@@ -6,12 +6,16 @@ import com.iticbcn.mywebbapp.llibresapp.Model.Llibre;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.lang.NonNull;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface Repositori extends CrudRepository<Llibre, Integer> {
     @Override
     @NonNull
-    Set<Llibre> findAll();
+    List<Llibre> findAll();
     Llibre findByTitol(String titol);
-    Set<Llibre> findByTitolAndEditorial(String titol, String editorial);
+    ArrayList<Llibre> findByTitolAndEditorial(String titol, String editorial);
+    Optional<Llibre> findById(int id);
 }
