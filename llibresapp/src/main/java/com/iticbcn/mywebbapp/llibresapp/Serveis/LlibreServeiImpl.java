@@ -75,6 +75,7 @@ public class LlibreServeiImpl implements LlibreService {
         if (llibre == null || llibre.getTitol() == null || llibre.getAutor() == null) {
             throw new IllegalArgumentException("El llibre no pot tenir camps obligatoris nuls");
         }
-        llibreRepositori.save(llibre);
+        Llibre saved = llibreRepositori.save(llibre);
+        System.out.println("Llibre guardat amb id: " + saved.getIdLlibre());
     }
 }

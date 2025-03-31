@@ -63,6 +63,7 @@ public class LlibreController {
     public String index(HttpSession session, Model model) {
         String usuari = (String) session.getAttribute("usuari");
         if (usuari == null) {
+            System.out.println("El usuario no está en la sesión.");
             return "redirect:/"; // Redirigeix al login si no hi ha usuari autenticat
         }
         model.addAttribute("usuari", usuari);
@@ -83,7 +84,8 @@ public class LlibreController {
 
         // Añadir datos al modelo
         model.addAttribute("llibres", llibres);
-        model.addAttribute("usuari", usuari); // Añadir el usuario directamente
+        model.addAttribute("usuari", usuari);
+        System.out.println("Modelo contiene el atributo 'usuari': " + model.containsAttribute("usuari"));
 
         return "consulta";
     }
@@ -131,7 +133,7 @@ public class LlibreController {
         // Guardar el llibre mitjançant el servei
         llibreService.save(llibre);
 
-        return "consulta"; // Redirigeix a la pàgina de consulta
+        return "redirect:/consulta";
     }
 
     // Formulari per cercar un llibre per ID
